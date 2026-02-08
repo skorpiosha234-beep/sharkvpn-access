@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦈 SharkVPN - Получить доступ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .vpn-links {
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .vpn-link {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .copy-btn {
+            background: #28a745;
+            padding: 10px 20px;
+            font-size: 14px;
+            margin-top: 10px;
+            width: auto;
+        }
+        
+        .instructions {
+            background: #e7f3ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .instructions h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🦈</div>
+        <h1>SharkVPN - Доступ к серверам</h1>
+        <p class="subtitle">Введите пароль для получения ссылок</p>
+        
+        <div id="loginSection">
+            <div class="input-group">
+                <label for="password">🔑 Пароль доступа:</label>
+                <input type="password" id="password" placeholder="Введите пароль, который вам дали">
+            </div>
+            <button onclick="checkPassword()">🔓 Получить доступ к SharkVPN</button>
+            <div id="errorMessage" class="error hidden">Неверный пароль!</div>
+        </div>
+        
+        <div id="contentSection" class="hidden">
+            <h2>✅ Доступ получен!</h2>
+            <p>Скопируйте эти ссылки и используйте в приложении VPN:</p>
+            
+            <div class="vpn-links" id="vpnLinksContainer">
+                <!-- Ссылки появятся здесь -->
+            </div>
+            
+            <div class="instructions">
+                <h3>📱 Как подключиться:</h3>
+                <ol>
+                    <li><strong>Скачайте приложение:</strong> NekoBox (Android) или Shadowrocket (iOS)</li>
+                    <li><strong>Добавьте ссылку:</strong> Нажмите "+" → "Импортировать из буфера обмена"</li>
+                    <li><strong>Выберите сервер:</strong> SharkVPN 🇩🇪 (Германия) или 🇱🇺 (Люксембург)</li>
+                    <li><strong>Подключитесь:</strong> Нажмите на сервер → "Подключиться"</li>
+                </ol>
+            </div>
+            
+            <div class="footer">
+                <p>🦈 SharkVPN | Для отключения доступа администратору нужно сменить пароль</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Адрес вашего config.json файла на GitHub
+        const CONFIG_URL = 'https://raw.githubusercontent.com/skorpiosha234-beep/sharkvpn-access/main/config.json';
+        
+        // Замените YOUR_USERNAME на ваше имя пользователя GitHub!
+        // Например: 'https://raw.githubusercontent.com/SharkVPNAdmin/sharkvpn-access/main/config.json'
+        
+        async function checkPassword() {
+            const passwordInput = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const loginSection = document.getElementById('loginSection');
+            const contentSection = document.getElementById('contentSection');
+            
+            // Сначала скрываем ошибку
+            errorMessage.classList.add('hidden');
+            
+            if (!passwordInput) {
+                errorMessage.textContent = 'Введите пароль!';
+                errorMessage.classList.remove('hidden');
+                return;
+            }
+            
+            try {
+                // Загружаем config.json с GitHub
+                const response = await fetch(CONFIG_URL);
+                const config = await response.json();
+                
+                // Проверяем пароль
+                if (passwordInput === config.password) {
+                    // Пароль верный!
+                    loginSection.classList.add('hidden');
+                    contentSection.classList.remove('hidden');
+                    
+                    // Показываем ссылки VPN
+                    displayVpnLinks(config.vpn_links);
+                } else {
+                    // Неверный пароль
+                    errorMessage.textContent = '❌ Неверный пароль! Обратитесь к администратору.';
+                    errorMessage.classList.remove('hidden');
+                }
+                
+            } catch (error) {
+                console.error('Ошибка:', error);
+                errorMessage.textContent = '⚠️ Ошибка загрузки. Попробуйте позже.';
+                errorMessage.classList.remove('hidden');
+            }
+        }
+        
+        function displayVpnLinks(links) {
+            const container = document.getElementById('vpnLinksContainer');
+            container.innerHTML = '';
+            
+            links.forEach((link, index) => {
+                const serverName = index === 0 ? '🇩🇪 Германия' : '🇱🇺 Люксембург';
+                const linkDiv = document.createElement('div');
+                linkDiv.className = 'vpn-link';
+                linkDiv.innerHTML = `
+                    <strong>${serverName}</strong><br>
+                    <span style="color: #666; font-size: 12px;">${link.substring(0, 80)}...</span>
+                    <br>
+                    <button class="copy-btn" onclick="copyToClipboard('${link.replace(/'/g, "\\'")}')">
+                        📋 Копировать ссылку
+                    </button>
+                `;
+                container.appendChild(linkDiv);
+            });
+        }
+        
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Ссылка скопирована в буфер обмена!\nТеперь вставьте её в приложение VPN.');
+            }).catch(err => {
+                console.error('Ошибка копирования:', err);
+                alert('❌ Ошибка копирования. Скопируйте ссылку вручную.');
+            });
+        }
+        
+        // Нажатие Enter в поле пароля
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
