@@ -1,0 +1,8 @@
+{
+  "password": "shark123",
+  "vpn_links": [
+    "vless://442e0a04-6d6f-442a-8cd0-a00d0da02d0d@85.192.35.9:443?security=reality&encryption=none&pbk=TPERgGPDAcekwVBVFV74aY_zD--Xx7GbTq1-f84h5Ew&headerType=none&fp=random&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=dodo.netotcluchai.top&sid=5145ab05854122b4#%F0%9F%A6%88SharkVPN%F0%9F%A6%88%20%F0%9F%87%A9%F0%9F%87%AA",
+    "vless://442e0a04-6d6f-442a-8cd0-a00d0da02d0d@duck.netotcluchai.top:443?security=reality&encryption=none&pbk=dhTXgiFZvZPJSNc33EqNvn_CRor_RKeiMxSkHsEdDic&headerType=none&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=duck.netotcluchai.top&sid=5145ab05854122b4#%F0%9F%A6%88SharkVPN%F0%9F%A6%88%20%F0%9F%87%B1%F0%9F%87%BA"
+  ],
+  "last_updated": "2024-01-01"
+}
